@@ -30,12 +30,7 @@ class Solution:
             print(prefix)
             result.append(prefix) 
         for char in current.children:
-            if current.children[char].isWord == True:
-                # print current.children[char]
-                print(prefix+char)
-                result.append(prefix+char)
-            else:
-                result.extend(self.findTheWord(current.children[char], prefix+char))
+            result.extend(self.findTheWord(current.children[char], prefix+char))
         return result
 
     def autoComplete(self, prefix):
@@ -46,8 +41,6 @@ class Solution:
                 return []
             current = current.children[char]
         ret = self.findTheWord(current, prefix)
-        if ret == None:
-            print("ret is None")
         result.extend(ret)
         return result
         
